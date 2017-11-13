@@ -22,7 +22,7 @@ import multiprocessing
 import time
 import random
 
-channel_url = "twitch.tv/"
+channel_url = "https://twitch.tv/"
 processes = []
 
 
@@ -51,7 +51,7 @@ def get_url():
     # Getting the json with all data regarding the stream
     try:
         response = subprocess.Popen(
-            ["livestreamer.exe", "--http-header", "Client-ID=ewvlchtxgqq88ru9gmfp1gmyt6h2b93", 
+            ["/usr/local/bin/livestreamer", "--yes-run-as-root", "--http-header", "Client-ID=ewvlchtxgqq88ru9gmfp1gmyt6h2b93", 
             channel_url, "-j"], stdout=subprocess.PIPE).communicate()[0]
     except subprocess.CalledProcessError:
         print "An error has occurred while trying to get the stream data. Is the channel online? Is the channel name correct?"
